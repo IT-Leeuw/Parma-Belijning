@@ -1,0 +1,124 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://parma-belijning.nl/" },
+    { "@type": "ListItem", "position": 2, "name": "Diensten", "item": "https://parma-belijning.nl/diensten/" },
+    { "@type": "ListItem", "position": 3, "name": "Kogelstralen", "item": "https://parma-belijning.nl/diensten/kogelstralen/" }
+  ]
+};
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Kogelstralen",
+  "provider": { "@type": "LocalBusiness", "name": "Parma Belijning Nederland" },
+  "areaServed": { "@type": "Country", "name": "Nederland" },
+  "description": "Parma Belijning Nederland verwijdert oude belijning en bereidt vloeren voor middels kogelstralen — stofvrij en snel.",
+};
+---
+
+<Layout
+  title="Kogelstralen | Parma Belijning Nederland"
+  description="Oude belijning verwijderen via kogelstralen? Parma Belijning Nederland werkt stofvrij en snel. Ideaal als voorbereiding voor nieuwe vloermarkering of coating."
+  schema={[schema, breadcrumb]}
+>
+  <Header />
+  <main>
+
+    <nav class="bg-slate-50 border-b border-slate-200" aria-label="Kruimelpad">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <ol class="flex items-center gap-2 text-sm text-slate-500">
+          <li><a href="/" class="hover:text-brand-600 transition-colors">Home</a></li>
+          <li><span class="text-slate-300">/</span></li>
+          <li><span class="text-slate-400">Diensten</span></li>
+          <li><span class="text-slate-300">/</span></li>
+          <li class="font-medium text-slate-700">Kogelstralen</li>
+        </ol>
+      </div>
+    </nav>
+
+    <section class="bg-slate-900 py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="text-brand-400 text-xs font-bold uppercase tracking-widest mb-4">Onze diensten</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white tracking-tight leading-tight mb-6">
+            Kogelstralen
+          </h1>
+          <p class="text-lg text-slate-300 leading-relaxed mb-8">
+            Kogelstralen is de meest effectieve methode om oude belijning te verwijderen en uw vloer optimaal voor te bereiden op nieuwe markering of coating. Parma Belijning Nederland werkt stofvrij, snel en zonder schade aan uw vloer.
+          </p>
+          <a href="/offerte/?dienst=kogelstralen" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-400 text-white font-bold px-6 py-3.5 rounded-xl transition-colors shadow-md">
+            Offerte aanvragen
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16">
+          <div>
+            <h2 class="text-2xl font-black text-slate-900 mb-4">Wat is kogelstralen?</h2>
+            <p class="text-slate-600 leading-relaxed mb-6">
+              Bij kogelstralen worden stalen kogeltjes met hoge snelheid tegen het vloeroppervlak geschoten. Hierdoor wordt de oude belijning of coating effectief verwijderd en krijgt de ondergrond een ruw profiel — ideaal voor nieuwe markering of vloercoating.
+            </p>
+            <p class="text-slate-600 leading-relaxed mb-6">
+              De machines zijn voorzien van een stofafzuigsysteem, waardoor het werkproces nagenoeg stofvrij verloopt. Uw bedrijfsvoering wordt zo min mogelijk verstoord.
+            </p>
+            <h3 class="text-xl font-bold text-slate-900 mb-4 mt-6">Toepassingen</h3>
+            <ul class="space-y-3">
+              {[
+                'Verwijderen van verf, thermoplast of tape',
+                'Voorbereiding voor nieuwe belijning',
+                'Voorbereiding voor vloercoating',
+                'Opruwen van gladde betonvloeren',
+                'Verwijderen van rubber of lijmresten',
+              ].map(item => (
+                <li class="flex items-start gap-3 text-slate-700">
+                  <svg class="w-5 h-5 text-brand-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="space-y-6">
+            <div class="bg-brand-50 border border-brand-200 rounded-2xl p-8">
+              <h3 class="font-bold text-slate-900 text-lg mb-3">Voordelen van kogelstralen</h3>
+              <ul class="space-y-2 text-sm text-slate-700">
+                {[
+                  'Stofvrij werken',
+                  'Snel en efficiënt',
+                  'Geen beschadiging van de ondergrond',
+                  'Geschikt voor grote en kleine oppervlakten',
+                  'Ideale ondergrondvoorbereiding',
+                ].map(v => (
+                  <li class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-500 shrink-0"></span>
+                    {v}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200">
+              <p class="font-semibold text-slate-900 mb-3">Heeft u belijning die verwijderd moet worden?</p>
+              <p class="text-sm text-slate-600 mb-4">Neem contact op met Parma Belijning Nederland voor advies en een vrijblijvende offerte.</p>
+              <a href="/offerte/?dienst=kogelstralen" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-semibold text-sm px-5 py-3 rounded-xl transition-colors">
+                Offerte aanvragen
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,338 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wat kost belijning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "De prijs hangt af van de ondergrond, het materiaaltype, de lijnbreedte en het aantal meters. Vraag een vrijblijvende offerte aan voor een exacte prijs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welke materialen gebruikt Parma Belijning Nederland?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2-componenten wegenverf, thermoplast, koudplast, PMMA en Premark. Het materiaal wordt afgestemd op de ondergrond en verwachte belasting."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Zijn jullie ook buiten Noord-Holland actief?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, Parma Belijning Nederland werkt door heel Nederland."
+      }
+    }
+  ]
+};
+
+const clients = [
+  'Abbott', 'Engie', 'IKEA', 'DHL', 'TNT', 'PostNL', 'Microsoft',
+  'Min. van Defensie', 'Gemeente Amsterdam', 'Gemeente Rotterdam',
+];
+
+const serviceButtons = [
+  { label: 'Magazijn / Logistieke belijning', href: '/soorten-belijning/magazijn-logistieke-belijning/' },
+  { label: 'Industriële belijning', href: '/soorten-belijning/industriele-belijning/' },
+  { label: 'Parkeer belijning', href: '/soorten-belijning/parkeer-belijning/' },
+];
+
+const diensten = [
+  { label: 'Belijning binnen / buiten', href: '/diensten/belijning-binnen-buiten/' },
+  { label: 'Kogelstralen', href: '/diensten/kogelstralen/' },
+  { label: 'Vloercoating', href: '/diensten/vloercoating/' },
+  { label: 'Pictogrammen / Symbolen', href: '/diensten/pictogrammen-symbolen/' },
+  { label: 'Advies belijning / Markering', href: '/diensten/advies-belijning/' },
+];
+
+const serviceCards = [
+  {
+    title: 'Magazijn en logistieke belijning',
+    desc: 'Belijning zal ertoe bijdragen om te voldoen aan de wettelijke veiligheidseisen zoals vastgelegd in het Bouwbesluit en de Arbo-wet. Zo kunt u bijvoorbeeld door de belijning van looppaden duidelijk aangeven waar voetgangers mogen lopen.',
+    href: '/soorten-belijning/magazijn-logistieke-belijning/',
+    link: 'Magazijn / Logistieke belijning',
+  },
+  {
+    title: 'Industriële belijning',
+    desc: 'Naast de algemeen geldende wettelijke veiligheidseisen zoals vastgelegd in het Bouwbesluit en de Arbo zijn er nog tal van goede redenen om belijning in industriële en productie omgevingen aan te brengen.',
+    href: '/soorten-belijning/industriele-belijning/',
+    link: 'Industriële belijning',
+  },
+  {
+    title: 'Parkeer belijning',
+    desc: 'Belijning en markering op parkeerterreinen en in parkeergarages zorgt voor efficiënt gebruik van uw beschikbare ruimte en een ordentelijk parkeerproces. Wij realiseren de belijning van zowel nieuw te richten parkeerterreinen en -garages als ook het vernieuwen van bestaande belijning.',
+    href: '/soorten-belijning/parkeer-belijning/',
+    link: 'Parkeer belijning',
+  },
+];
+
+const faqs = [
+  { q: 'Wat kost belijning?', a: 'De kosten hangen af van de ondergrond, het materiaaltype (2K-wegenverf, thermoplast, koudplast of PMMA), lijnbreedte en het totale aantal meters. Vraag een vrijblijvende offerte aan voor een exacte prijs.' },
+  { q: 'Hoe lang duurt het voordat belijning droog is?', a: '2-componenten wegenverf: na 1 uur beloopbaar, na 72 uur volledig uitgehard. Thermoplast / Premark: 10 minuten. Koudplast: 15 minuten. PMMA: 20 minuten.' },
+  { q: 'Kunnen jullie ook oude belijning verwijderen?', a: 'Ja, via kogelstralen of schuurmachine. We werken stofvrij zodat uw bedrijfsvoering zo min mogelijk verstoord wordt.' },
+  { q: 'Welke materialen gebruiken jullie?', a: '2-componenten wegenverf, thermoplast, koudplast, PMMA en Premark. Het materiaal wordt afgestemd op de ondergrond en verwachte belasting.' },
+  { q: 'Zijn jullie ook buiten Noord-Holland actief?', a: 'Ja, Parma Belijning Nederland werkt door heel Nederland — van Amsterdam en Haarlem tot Rotterdam, Den Haag en ver daarbuiten.' },
+  { q: 'Wat zijn de standaard afmetingen van een parkeervak?', a: 'Standaard: 5,0 m × 2,5 m. Gehandicaptenparkeerplaats: minimaal 5,0 m × 3,5 m.' },
+];
+---
+
+<Layout
+  title="Parma Belijning Nederland | Hét adres voor alle soorten belijning"
+  description="Parma Belijning Nederland verzorgt professionele belijning voor magazijnen, industrie, parkeerterreinen en sportvelden. Betrouwbaar, topkwaliteit, flexibel. Vraag nu uw offerte aan."
+  schema={faqSchema}
+>
+  <Header />
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="bg-[#1a2744] py-20 md:py-28 relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10" aria-hidden="true"
+        style="background-image: repeating-linear-gradient(45deg, #f59e0b 0, #f59e0b 1px, transparent 0, transparent 50%); background-size: 30px 30px;">
+      </div>
+      <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+          Hét adres voor alle denkbare<br class="hidden sm:block" /> soorten belijning
+        </h1>
+        <p class="text-lg md:text-xl text-white/75 max-w-3xl mx-auto leading-relaxed mb-10">
+          Met Parma Belijning Nederland heeft u een competente partner die u over alle aspecten van grondmarkeringen en belijning binnen uw bedrijf of organisatie kan adviseren.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/offerte/" class="inline-flex items-center justify-center gap-2 bg-[#f59e0b] hover:bg-[#d97706] text-white font-bold text-base px-8 py-4 rounded-lg shadow-lg transition-colors">
+            Offerte aanvragen
+          </a>
+          <a href="#diensten" class="inline-flex items-center justify-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-semibold text-base px-8 py-4 rounded-lg transition-colors">
+            Bekijk onze diensten
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOTO GRID (placeholder) ===== -->
+    <section class="bg-[#f0f4f8] py-4">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+          {['Magazijn belijning', 'Industriële markering', 'Parkeer belijning', 'Pictogrammen'].map(label => (
+            <div class="aspect-[4/3] bg-[#1a2744]/10 rounded-lg flex items-center justify-center border-2 border-dashed border-[#1a2744]/20">
+              <div class="text-center p-4">
+                <svg class="w-8 h-8 text-[#1a2744]/30 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+                <p class="text-xs text-[#1a2744]/40 font-medium">{label}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p class="text-center text-xs text-slate-400 mt-2 italic">Foto's worden toegevoegd — zie ook <a href="/fotos/" class="underline hover:text-[#f59e0b]">onze projectgalerij</a></p>
+      </div>
+    </section>
+
+    <!-- ===== EEN LIJNENSPEL ===== -->
+    <section id="diensten" class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-3 gap-10 items-start">
+
+          <!-- Tekst links -->
+          <div class="lg:col-span-2">
+            <h2 class="text-2xl md:text-3xl font-black text-[#1a2744] mb-5">Een lijnenspel op maat gesneden</h2>
+            <p class="text-slate-600 leading-relaxed mb-4">
+              Grondmarkering en andere vormen van belijning vervullen belangrijke functies in bedrijven en organisaties. Een <strong class="text-slate-800">veilige werkomgeving</strong> voor uw medewerkers, <strong class="text-slate-800">ondersteuning van uw werkprocessen</strong>, <strong class="text-slate-800">efficiënt gebruik van beschikbare ruimte</strong> en het <strong class="text-slate-800">handhaven van orde en netheid</strong> zijn enkele voordelen waar duidelijke belijning en grondmarkering een belangrijke rol kan vervullen.
+            </p>
+            <p class="text-slate-600 leading-relaxed mb-4">
+              Ons team van hoogwaardige medewerkers met jarenlange ervaring zal u ondersteunen met innovatieve ideeën en een deskundige uitvoering van uw opdrachten.
+            </p>
+            <p class="text-slate-600 leading-relaxed mb-4">
+              Wij kunnen uw markeringsprojecten in alle fases, dus van begin tot eind, begeleiden. Van advies tot planning en uitvoering bieden wij u "full service uit een hand".
+            </p>
+            <p class="text-slate-600 leading-relaxed">
+              Het spectrum van Parma Belijning Nederland omvat o.a. <strong class="text-slate-800">belijning voor de logistiek, belijning voor industrie, vluchtroutes, parkeerplaatsen en parkeergarages, sportvelden en speelpleinen</strong>.
+            </p>
+          </div>
+
+          <!-- Knoppen rechts -->
+          <div class="space-y-3">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Soorten belijning</p>
+            {serviceButtons.map(btn => (
+              <a
+                href={btn.href}
+                class="flex items-center justify-between w-full bg-[#f59e0b] hover:bg-[#d97706] text-white font-semibold text-sm px-5 py-4 rounded-lg transition-colors shadow-sm group"
+              >
+                {btn.label}
+                <svg class="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            ))}
+            <div class="pt-2">
+              <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Onze diensten</p>
+              {diensten.map(d => (
+                <a href={d.href} class="flex items-center gap-2 text-sm text-slate-600 hover:text-[#f59e0b] py-1.5 transition-colors">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#f59e0b] shrink-0"></span>
+                  {d.label}
+                </a>
+              ))}
+            </div>
+            <div class="pt-4">
+              <a
+                href="/offerte/"
+                class="flex items-center justify-between w-full bg-[#1a2744] hover:bg-[#243560] text-white font-bold text-sm px-5 py-4 rounded-lg transition-colors shadow-sm group"
+              >
+                Belijning Offerte Aanvragen?
+                <svg class="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== OVERTUIG U ZELF ===== -->
+    <section class="py-16 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-black text-[#1a2744] mb-5">Overtuig u zelf van onze prestaties</h2>
+            <p class="text-slate-600 leading-relaxed mb-6">
+              Tal van klanten maken reeds gebruik van onze diensten. <strong class="text-slate-800">Voorbeelden van diverse markering- en belijningsprojecten laten wij u op deze site zien.</strong> Wij hopen u daarmee een indruk te geven van onze mogelijkheden en verzekeren u nu al dat ook uw belijningsproject op tijd en binnen uw budget door ons zal worden uitgevoerd.
+            </p>
+            <a href="/fotos/" class="inline-flex items-center gap-2 bg-[#f59e0b] hover:bg-[#d97706] text-white font-bold px-6 py-3 rounded-lg transition-colors shadow-sm">
+              Bekijk onze projecten
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+          <div class="aspect-[4/3] bg-[#1a2744]/10 rounded-xl flex items-center justify-center border-2 border-dashed border-[#1a2744]/20">
+            <div class="text-center p-8">
+              <svg class="w-12 h-12 text-[#1a2744]/30 mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5-1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+              </svg>
+              <p class="text-sm text-[#1a2744]/40 font-medium">Projectfoto toevoegen</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA WILT U MEER WETEN ===== -->
+    <section class="bg-[#1a2744] py-14">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-2xl md:text-3xl font-black text-white mb-4">Wilt u meer weten?</h2>
+        <p class="text-white/70 mb-8 text-lg">
+          Neem dan contact met ons op via <a href="tel:0235650840" class="text-[#f59e0b] hover:text-[#fbbf24] font-semibold transition-colors">023 565 08 40</a> of mail naar <a href="mailto:info@parma-belijning.nl" class="text-[#f59e0b] hover:text-[#fbbf24] font-semibold transition-colors">info@parma-belijning.nl</a>.
+        </p>
+        <p class="text-white/60 mb-8 max-w-2xl mx-auto">
+          Parma Belijning is een competente partner die u goed advies geeft over alle aspecten van de mogelijkheden voor grondmarkeringen en belijning binnen uw bedrijf of organisatie.
+        </p>
+        <a href="/contact/" class="inline-flex items-center gap-2 bg-[#f59e0b] hover:bg-[#d97706] text-white font-bold text-base px-8 py-4 rounded-lg shadow-lg transition-colors">
+          Neem contact op
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== FOTO GRID 2 ===== -->
+    <section class="bg-[#f0f4f8] py-4">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-3 md:grid-cols-6 gap-2">
+          {['Belijning parking', 'Magazijn markering', 'Vluchtroute', 'Industrie', 'Sportsveld', 'Pictogrammen'].map(label => (
+            <div class="aspect-square bg-[#1a2744]/10 rounded-lg flex items-center justify-center border-2 border-dashed border-[#1a2744]/20">
+              <div class="text-center p-2">
+                <svg class="w-6 h-6 text-[#1a2744]/30 mx-auto mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5M12 3v4.5" />
+                </svg>
+                <p class="text-[9px] text-[#1a2744]/40 font-medium leading-tight">{label}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DRIE DIENSTEN ===== -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        {serviceCards.map((card, i) => (
+          <div class={`grid md:grid-cols-2 gap-10 items-center ${i % 2 === 1 ? 'md:[direction:rtl]' : ''}`}>
+            <div class={i % 2 === 1 ? '[direction:ltr]' : ''}>
+              <h2 class="text-xl md:text-2xl font-black text-[#1a2744] mb-4">{card.title}</h2>
+              <p class="text-slate-600 leading-relaxed mb-5">{card.desc}</p>
+              <a
+                href={card.href}
+                class="inline-flex items-center gap-2 bg-[#f59e0b] hover:bg-[#d97706] text-white font-semibold text-sm px-5 py-3 rounded-lg transition-colors shadow-sm group"
+              >
+                <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+                naar "{card.link}"
+              </a>
+            </div>
+            <div class={`aspect-[4/3] bg-[#1a2744]/10 rounded-xl flex items-center justify-center border-2 border-dashed border-[#1a2744]/20 ${i % 2 === 1 ? '[direction:ltr]' : ''}`}>
+              <div class="text-center p-8">
+                <svg class="w-10 h-10 text-[#1a2744]/30 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5-1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+                <p class="text-sm text-[#1a2744]/40 font-medium">{card.title}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ===== KLANTEN ===== -->
+    <section class="py-12 bg-slate-50 border-t border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-center text-xs font-bold text-slate-400 uppercase tracking-widest mb-8">Vertrouwd door meer dan 40 organisaties</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          {clients.map(name => (
+            <div class="bg-white border border-slate-200 rounded-lg px-4 py-2.5 text-sm font-semibold text-[#1a2744] shadow-sm">
+              {name}
+            </div>
+          ))}
+          <div class="bg-white border border-slate-200 rounded-lg px-4 py-2.5 text-sm font-medium text-slate-400 shadow-sm italic">
+            en vele anderen
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="py-16 bg-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-black text-[#1a2744] mb-8 text-center">Veelgestelde vragen</h2>
+        <div class="space-y-2">
+          {faqs.map(faq => (
+            <details class="group border border-slate-200 rounded-lg overflow-hidden">
+              <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer list-none font-semibold text-[#1a2744] hover:bg-slate-50 transition-colors">
+                {faq.q}
+                <svg class="w-5 h-5 text-slate-400 shrink-0 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="px-5 pb-4 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">{faq.a}</div>
+            </details>
+          ))}
+        </div>
+        <div class="mt-8 text-center">
+          <a href="/contact/" class="inline-flex items-center gap-2 text-[#f59e0b] hover:text-[#d97706] font-semibold transition-colors">
+            Meer vragen? Bekijk onze volledige FAQ
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>

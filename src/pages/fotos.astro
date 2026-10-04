@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const projecten = [
+  { categorie: 'Magazijn & Logistiek', items: ['Belijning distributiecentrum DHL', 'Looproutes warehouse PostNL', 'Magazijnbelijning inclusief pictogrammen', 'Logistiek centrum vluchtroutes'] },
+  { categorie: 'Industrieel', items: ['Productiehal belijning 5S-methodiek', 'Industrie opstelvakken belijning', 'Procesondersteunende markering', 'Fabriek veiligheidsmarkering'] },
+  { categorie: 'Parkeer belijning', items: ['Belijning parkeerterrein bedrijf', 'Parkeergarage markering', 'Gehandicaptenparkeerplaatsen', 'Vrachtwagen parkeerplaatsen'] },
+  { categorie: 'Overig', items: ['Sportveld belijning', 'Speelplaats markering', 'Vluchtroute markering', 'Pictogrammen & symbolen'] },
+];
+---
+
+<Layout
+  title="Foto's & Projecten | Parma Belijning Nederland"
+  description="Bekijk foto's van uitgevoerde belijningsprojecten door Parma Belijning Nederland. Magazijnen, industriële omgevingen, parkeerterreinen en sportvelden."
+>
+  <Header />
+  <main>
+
+    <nav class="bg-slate-50 border-b border-slate-200" aria-label="Kruimelpad">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <ol class="flex items-center gap-2 text-sm text-slate-500">
+          <li><a href="/" class="hover:text-brand-600 transition-colors">Home</a></li>
+          <li><span class="text-slate-300">/</span></li>
+          <li class="font-medium text-slate-700">Foto's & Projecten</li>
+        </ol>
+      </div>
+    </nav>
+
+    <section class="bg-slate-900 py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">Foto's <span class="text-brand-400">& Projecten</span></h1>
+        <p class="text-lg text-slate-300 max-w-2xl">Een selectie van uitgevoerde belijningsprojecten door heel Nederland.</p>
+      </div>
+    </section>
+
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-brand-50 border border-brand-200 rounded-2xl p-8 mb-16 text-center">
+          <p class="text-lg font-semibold text-slate-900 mb-2">Foto's worden binnenkort toegevoegd</p>
+          <p class="text-slate-600 text-sm mb-5">Wilt u al een indruk krijgen van onze werkzaamheden? Neem dan contact op — we sturen u graag referentieprojecten toe die bij uw situatie passen.</p>
+          <a href="/contact/" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-semibold px-5 py-3 rounded-xl transition-colors text-sm">
+            Vraag referenties op
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+          </a>
+        </div>
+
+        <h2 class="text-2xl font-black text-slate-900 mb-8">Onze projectcategorieën</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {projecten.map(p => (
+            <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+              <h3 class="font-bold text-slate-900 mb-4">{p.categorie}</h3>
+              <ul class="space-y-2">
+                {p.items.map(item => (
+                  <li class="text-sm text-slate-600 flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-400 mt-1.5 shrink-0"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-brand-500">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-2xl md:text-3xl font-black text-white mb-4">Interesse in een project voor uw bedrijf?</h2>
+        <p class="text-brand-100 mb-8">Vraag een vrijblijvende offerte aan of neem contact op voor meer informatie.</p>
+        <a href="/offerte/" class="inline-flex items-center gap-2 bg-white hover:bg-slate-50 text-brand-600 font-bold px-7 py-4 rounded-xl shadow-lg transition-colors">
+          Vraag een offerte aan
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>

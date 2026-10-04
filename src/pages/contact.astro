@@ -1,0 +1,199 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wat bepaalt de prijs van belijning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "De prijs hangt af van de ondergrond, eventueel kogelstralen of primer, het materiaaltype (2K-wegenverf, thermoplast, koudplast of PMMA), de lijnbreedte, het aantal sjablonen en eventueel afzegeling met transparante lak."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hoe verloopt een opdracht bij Parma Belijning Nederland?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We stellen een plan op, spreken een moment af dat voor u het beste uitkomt, brengen de belijning aan en na het drogen kunt u de ruimte direct weer gebruiken."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hoe lang duurt het aanbrengen van belijning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "De duur hangt af van het totale aantal strekkende meters, het gebruikte materiaal, de ondergrond en eventuele voorbewerking zoals kogelstralen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welke materialen gebruikt Parma Belijning Nederland?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Parma Belijning Nederland werkt met 2-componenten wegenverf, thermoplast, koudplast, PMMA en Premark. De materiaalkeuze wordt afgestemd op de ondergrond en verwachte belasting."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hoe lang duurt het voordat belijning droog is?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2K-wegenverf: 1 uur beloopbaar, 72 uur volledig uitgehard. Thermoplast / Premark: 10 minuten. Koudplast: 15 minuten. PMMA: 20 minuten."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kunnen jullie ook oude belijning verwijderen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Oude belijning verwijderen we door middel van kogelstralen of een schuurmachine. We werken stofvrij."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wat zijn de standaard afmetingen van een parkeervak?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Standaard: 5,0 m × 2,5 m. Gehandicaptenparkeerplaats: minimaal 5,0 m × 3,5 m."
+      }
+    }
+  ]
+};
+---
+
+<Layout
+  title="Contact & FAQ | Parma Belijning Nederland"
+  description="Neem contact op met Parma Belijning Nederland. Telefoon: 023 565 08 40. E-mail: info@parma-belijning.nl. IJweg 616, 2141 CN Vijfhuizen. Of bekijk onze veelgestelde vragen."
+  schema={faqSchema}
+>
+  <Header />
+  <main>
+
+    <nav class="bg-slate-50 border-b border-slate-200" aria-label="Kruimelpad">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <ol class="flex items-center gap-2 text-sm text-slate-500">
+          <li><a href="/" class="hover:text-brand-600 transition-colors">Home</a></li>
+          <li><span class="text-slate-300">/</span></li>
+          <li class="font-medium text-slate-700">Contact / FAQ</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="bg-slate-900 py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">Contact <span class="text-brand-400">& FAQ</span></h1>
+        <p class="text-lg text-slate-300 max-w-2xl">Heeft u een vraag of wilt u een offerte aanvragen? Neem contact op met Parma Belijning Nederland.</p>
+      </div>
+    </section>
+
+    <!-- Contact + Form -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16">
+
+          <!-- Contact info -->
+          <div>
+            <h2 class="text-2xl font-black text-slate-900 mb-6">Snel contact</h2>
+            <div class="space-y-4 mb-10">
+              <a href="tel:0235650840" class="flex items-center gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-brand-200 hover:bg-brand-50 transition-all group">
+                <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center text-brand-600 group-hover:bg-brand-500 group-hover:text-white transition-colors">
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 8V5z" /></svg>
+                </div>
+                <div>
+                  <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Telefoon</p>
+                  <p class="text-xl font-bold text-slate-900">023 565 08 40</p>
+                  <p class="text-xs text-slate-400">Ma–Vr 08:00–17:00</p>
+                </div>
+              </a>
+              <a href="mailto:info@parma-belijning.nl" class="flex items-center gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-brand-200 hover:bg-brand-50 transition-all group">
+                <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center text-brand-600 group-hover:bg-brand-500 group-hover:text-white transition-colors">
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                </div>
+                <div>
+                  <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">E-mail</p>
+                  <p class="text-lg font-bold text-slate-900">info@parma-belijning.nl</p>
+                </div>
+              </a>
+              <div class="flex items-center gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-200">
+                <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center text-brand-600">
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                </div>
+                <div>
+                  <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Adres</p>
+                  <p class="font-bold text-slate-900">IJweg 616</p>
+                  <p class="text-slate-600">2141 CN Vijfhuizen</p>
+                </div>
+              </div>
+            </div>
+            <a href="/offerte/" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-bold px-6 py-3.5 rounded-xl transition-colors shadow-sm">
+              Offerte aanvragen
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+            </a>
+          </div>
+
+          <!-- Contact form -->
+          <div class="bg-slate-50 rounded-2xl border border-slate-200 p-8">
+            <h2 class="text-xl font-bold text-slate-900 mb-5">Stuur ons een bericht</h2>
+            <form method="POST" action="/contact/bedankt/" class="space-y-4">
+              <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <div>
+                <label for="contact-naam" class="block text-sm font-medium text-slate-700 mb-1.5">Naam</label>
+                <input type="text" id="contact-naam" name="naam" required autocomplete="name" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition" placeholder="Uw naam" />
+              </div>
+              <div>
+                <label for="contact-email" class="block text-sm font-medium text-slate-700 mb-1.5">E-mailadres</label>
+                <input type="email" id="contact-email" name="email" required autocomplete="email" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition" placeholder="naam@bedrijf.nl" />
+              </div>
+              <div>
+                <label for="contact-bericht" class="block text-sm font-medium text-slate-700 mb-1.5">Uw vraag of bericht</label>
+                <textarea id="contact-bericht" name="bericht" required rows="5" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition resize-none" placeholder="Wat wilt u aan ons vragen?"></textarea>
+              </div>
+              <button type="submit" class="w-full flex items-center justify-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-bold text-base px-6 py-4 rounded-xl transition-colors">
+                Bericht versturen
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20 bg-slate-50">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <p class="text-xs font-bold text-brand-600 uppercase tracking-widest mb-3">Meer vragen over belijning?</p>
+          <h2 class="text-3xl font-black text-slate-900 tracking-tight">Veelgestelde vragen</h2>
+        </div>
+        <div class="space-y-3">
+          {[
+            { q: 'Wat bepaalt de prijs van belijning?', a: 'De prijs hangt af van de ondergrond, eventueel kogelstralen of primer, het materiaaltype (2K-wegenverf, thermoplast, koudplast of PMMA), de lijnbreedte, het aantal sjablonen en eventueel afzegeling met transparante lak. Vraag een offerte aan voor een exacte prijs.' },
+            { q: 'Hoe verloopt een opdracht?', a: 'We stellen een plan op, spreken een moment af dat voor u het minst storend is, brengen de belijning aan en na het drogen kunt u de ruimte direct weer gebruiken.' },
+            { q: 'Hoe lang duurt het aanbrengen?', a: 'De duur hangt af van het totale aantal strekkende meters, het gebruikte materiaal, de ondergrond en eventuele voorbewerking zoals kogelstralen. We geven u vooraf een realistische planning.' },
+            { q: 'Welke materialen gebruiken jullie?', a: '2-componenten wegenverf, thermoplast, koudplast, PMMA en Premark. Het juiste materiaal wordt afgestemd op de ondergrond en verwachte belasting.' },
+            { q: 'Hoe lang duurt het voordat belijning droog is?', a: '2K-wegenverf: na 1 uur beloopbaar, na 72 uur volledig uitgehard. Thermoplast / Premark: 10 minuten. Koudplast: 15 minuten. PMMA: 20 minuten.' },
+            { q: 'Kunnen jullie ook oude belijning verwijderen?', a: 'Ja, via kogelstralen of schuurmachine. We werken stofvrij zodat uw bedrijfsvoering zo min mogelijk verstoord wordt.' },
+            { q: 'Wat zijn de standaard afmetingen van een parkeervak?', a: 'Standaard: 5,0 m × 2,5 m. Gehandicaptenparkeerplaats: minimaal 5,0 m × 3,5 m.' },
+          ].map(faq => (
+            <details class="group bg-white border border-slate-200 rounded-2xl overflow-hidden">
+              <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-slate-900 hover:bg-slate-50 transition-colors">
+                {faq.q}
+                <svg class="w-5 h-5 text-slate-400 shrink-0 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+              </summary>
+              <div class="px-6 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">{faq.a}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>

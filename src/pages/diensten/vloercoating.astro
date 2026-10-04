@@ -1,0 +1,121 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Vloercoating",
+  "provider": { "@type": "LocalBusiness", "name": "Parma Belijning Nederland" },
+  "areaServed": { "@type": "Country", "name": "Nederland" },
+  "description": "Parma Belijning Nederland verzorgt professionele vloercoating voor industriële vloeren, magazijnen en parkeergarages door heel Nederland.",
+};
+
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://parma-belijning.nl/" },
+    { "@type": "ListItem", "position": 2, "name": "Diensten", "item": "https://parma-belijning.nl/diensten/" },
+    { "@type": "ListItem", "position": 3, "name": "Vloercoating", "item": "https://parma-belijning.nl/diensten/vloercoating/" }
+  ]
+};
+---
+
+<Layout
+  title="Vloercoating | Parma Belijning Nederland"
+  description="Professionele vloercoating voor industriële vloeren, magazijnen en parkeergarages. Parma Belijning Nederland adviseert en voert uit. Offerte aanvragen."
+  schema={[schema, breadcrumb]}
+>
+  <Header />
+  <main>
+
+    <nav class="bg-slate-50 border-b border-slate-200" aria-label="Kruimelpad">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <ol class="flex items-center gap-2 text-sm text-slate-500">
+          <li><a href="/" class="hover:text-brand-600 transition-colors">Home</a></li>
+          <li><span class="text-slate-300">/</span></li>
+          <li><span class="text-slate-400">Diensten</span></li>
+          <li><span class="text-slate-300">/</span></li>
+          <li class="font-medium text-slate-700">Vloercoating</li>
+        </ol>
+      </div>
+    </nav>
+
+    <section class="bg-slate-900 py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="text-brand-400 text-xs font-bold uppercase tracking-widest mb-4">Onze diensten</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white tracking-tight leading-tight mb-6">
+            Vloercoating
+          </h1>
+          <p class="text-lg text-slate-300 leading-relaxed mb-8">
+            Een professionele vloercoating beschermt uw vloer, maakt hem makkelijker schoon te houden en verbetert de algehele uitstraling van uw bedrijfsruimte. Parma Belijning Nederland verzorgt vloercoating in combinatie met belijning voor een compleet eindresultaat.
+          </p>
+          <a href="/offerte/?dienst=vloercoating" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-400 text-white font-bold px-6 py-3.5 rounded-xl transition-colors shadow-md">
+            Offerte aanvragen
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16">
+          <div>
+            <h2 class="text-2xl font-black text-slate-900 mb-4">Bescherming én uitstraling voor uw vloer</h2>
+            <p class="text-slate-600 leading-relaxed mb-6">
+              Vloercoating is ideaal als beschermlaag voor betonvloeren in magazijnen, productiehallen en parkeergarages. Het voorkomt stofvorming, maakt de vloer schoonmaakbestendig en verlengt de levensduur van de ondergrond.
+            </p>
+            <p class="text-slate-600 leading-relaxed mb-6">
+              In combinatie met belijning krijgt u een complete vloeroplossing: de coating als basis en de markering voor veiligheid en overzicht.
+            </p>
+            <h3 class="text-xl font-bold text-slate-900 mb-4 mt-6">Voordelen van vloercoating</h3>
+            <ul class="space-y-3">
+              {[
+                'Bescherming van de betonvloer',
+                'Stofvrij — geen stofopwerveling',
+                'Eenvoudig te reinigen',
+                'Verbeterde lichtreflectie (werkplek veiliger en lichter)',
+                'Lange levensduur',
+                'Geschikt voor heftruckrijden',
+                'Combineerbaar met belijning',
+              ].map(item => (
+                <li class="flex items-start gap-3 text-slate-700">
+                  <svg class="w-5 h-5 text-brand-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="space-y-6">
+            <div class="bg-brand-50 border border-brand-200 rounded-2xl p-8">
+              <h3 class="font-bold text-slate-900 text-lg mb-3">Voorbereiding is essentieel</h3>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Voor een goede hechting van vloercoating is een goede ondergrondvoorbereiding cruciaal. Parma Belijning Nederland kan de vloer kogelstralen als voorbereiding — zodat de coating optimaal hecht en lang meegaat.
+              </p>
+              <a href="/diensten/kogelstralen/" class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 mt-3 hover:text-brand-700">
+                Meer over kogelstralen
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+              </a>
+            </div>
+            <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200">
+              <h3 class="font-bold text-slate-900 text-lg mb-3">Combineer met belijning</h3>
+              <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                De beste resultaten ontstaan wanneer vloercoating en belijning in één project worden gecombineerd. Parma Belijning Nederland verzorgt dit volledig als one-stop-shop.
+              </p>
+              <a href="/offerte/?dienst=vloercoating" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-semibold text-sm px-5 py-3 rounded-xl transition-colors">
+                Offerte aanvragen
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,136 @@
+---
+const nav = [
+  {
+    label: 'Soorten belijning',
+    href: '#',
+    children: [
+      { label: 'Magazijn / Logistieke belijning', href: '/soorten-belijning/magazijn-logistieke-belijning/' },
+      { label: 'Industriële belijning', href: '/soorten-belijning/industriele-belijning/' },
+      { label: 'Parkeer belijning', href: '/soorten-belijning/parkeer-belijning/' },
+    ],
+  },
+  {
+    label: 'Onze diensten',
+    href: '#',
+    children: [
+      { label: 'Belijning binnen / buiten', href: '/diensten/belijning-binnen-buiten/' },
+      { label: 'Kogelstralen', href: '/diensten/kogelstralen/' },
+      { label: 'Vloercoating', href: '/diensten/vloercoating/' },
+      { label: 'Pictogrammen / Symbolen', href: '/diensten/pictogrammen-symbolen/' },
+      { label: 'Advies belijning / Markering', href: '/diensten/advies-belijning/' },
+    ],
+  },
+  { label: "Foto's", href: '/fotos/' },
+  { label: 'Contact / FAQ', href: '/contact/' },
+];
+---
+
+<header class="sticky top-0 z-50 bg-[#1a2744] shadow-lg">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 md:h-20">
+
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 shrink-0" aria-label="Parma Belijning Nederland - homepage">
+        <div class="w-10 h-10 bg-[#f59e0b] rounded flex items-center justify-center shrink-0">
+          <span class="text-white font-black text-xl leading-none">P</span>
+        </div>
+        <div class="leading-tight">
+          <span class="text-white font-black text-lg tracking-tight leading-none block">arma-Belijning</span>
+          <span class="text-[#f59e0b] text-[10px] font-semibold tracking-widest uppercase leading-none block">Nederland</span>
+        </div>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden lg:flex items-center gap-1" aria-label="Hoofdnavigatie">
+        {nav.map(item => (
+          item.children ? (
+            <div class="relative group">
+              <button
+                class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-white/90 hover:text-white rounded hover:bg-white/10 transition-colors"
+                aria-haspopup="true"
+              >
+                {item.label}
+                <svg class="w-3.5 h-3.5 opacity-60 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-1 w-60 bg-[#1a2744] border border-white/10 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                <div class="py-2">
+                  {item.children.map(child => (
+                    <a
+                      href={child.href}
+                      class="block px-4 py-2.5 text-sm text-white/80 hover:bg-white/10 hover:text-white transition-colors"
+                    >
+                      {child.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <a
+              href={item.href}
+              class="px-3 py-2 text-sm font-medium text-white/90 hover:text-white rounded hover:bg-white/10 transition-colors"
+            >
+              {item.label}
+            </a>
+          )
+        ))}
+        <a
+          href="/offerte/"
+          class="ml-3 inline-flex items-center gap-1.5 bg-[#f59e0b] hover:bg-[#d97706] text-white text-sm font-bold px-5 py-2.5 rounded transition-colors shadow-md"
+        >
+          Offerte?
+        </a>
+      </nav>
+
+      <!-- Mobile toggle -->
+      <button
+        id="mobile-menu-btn"
+        class="lg:hidden p-2 rounded text-white/80 hover:bg-white/10 transition-colors"
+        aria-label="Menu openen"
+        aria-expanded="false"
+      >
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="lg:hidden hidden border-t border-white/10 bg-[#1a2744]">
+    <nav class="max-w-7xl mx-auto px-4 py-4 space-y-1" aria-label="Mobiele navigatie">
+      {nav.map(item => (
+        item.children ? (
+          <div>
+            <p class="px-3 pt-3 pb-1 text-xs font-semibold text-white/40 uppercase tracking-wider">{item.label}</p>
+            {item.children.map(child => (
+              <a href={child.href} class="block px-3 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-white rounded transition-colors">
+                {child.label}
+              </a>
+            ))}
+          </div>
+        ) : (
+          <a href={item.href} class="block px-3 py-2 text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white rounded transition-colors">
+            {item.label}
+          </a>
+        )
+      ))}
+      <div class="pt-3 border-t border-white/10">
+        <a href="/offerte/" class="flex items-center justify-center bg-[#f59e0b] hover:bg-[#d97706] text-white font-bold text-sm px-5 py-3 rounded transition-colors">
+          Offerte aanvragen
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', String(!open));
+  });
+</script>

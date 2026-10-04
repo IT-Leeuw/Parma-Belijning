@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Pagina niet gevonden | Parma Belijning Nederland"
+  description="De pagina die u zoekt is niet gevonden. Ga terug naar de homepage van Parma Belijning Nederland."
+  noindex={true}
+>
+  <Header />
+  <main>
+    <section class="min-h-screen bg-slate-50 flex items-center justify-center py-20">
+      <div class="max-w-lg mx-auto px-4 text-center">
+        <p class="text-8xl font-black text-brand-500 mb-4">404</p>
+        <h1 class="text-3xl font-black text-slate-900 mb-4">Pagina niet gevonden</h1>
+        <p class="text-slate-600 mb-8">De pagina die u zoekt bestaat niet of is verplaatst. Gebruik de navigatie om verder te gaan.</p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="/" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-semibold px-6 py-3.5 rounded-xl transition-colors">
+            Naar de homepage
+          </a>
+          <a href="/contact/" class="inline-flex items-center gap-2 border border-slate-300 hover:border-slate-400 text-slate-700 hover:text-slate-900 font-semibold px-6 py-3.5 rounded-xl transition-colors">
+            Contact opnemen
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

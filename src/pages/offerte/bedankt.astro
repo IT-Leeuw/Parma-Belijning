@@ -1,0 +1,33 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout
+  title="Bedankt voor uw aanvraag | Parma Belijning Nederland"
+  description="Uw offerte-aanvraag is ontvangen. Parma Belijning Nederland neemt zo snel mogelijk contact met u op."
+  noindex={true}
+>
+  <Header />
+  <main>
+    <section class="min-h-screen bg-slate-50 flex items-center justify-center py-20">
+      <div class="max-w-lg mx-auto px-4 text-center">
+        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <svg class="w-10 h-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h1 class="text-3xl font-black text-slate-900 mb-4">Bedankt voor uw aanvraag!</h1>
+        <p class="text-slate-600 text-lg leading-relaxed mb-8">
+          Uw offerte-aanvraag is ontvangen. Parma Belijning Nederland neemt zo snel mogelijk — in ieder geval binnen 1 werkdag — contact met u op.
+        </p>
+        <p class="text-slate-500 mb-8">Heeft u een dringende vraag? Bel ons dan direct op <a href="tel:0235650840" class="font-semibold text-brand-600 hover:text-brand-700">023 565 08 40</a>.</p>
+        <a href="/" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-semibold px-6 py-3.5 rounded-xl transition-colors">
+          Terug naar de homepage
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
