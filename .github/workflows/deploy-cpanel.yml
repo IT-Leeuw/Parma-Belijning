@@ -54,10 +54,10 @@ jobs:
           name: website
           path: dist/
 
-      - name: Install FTPS client
+      - name: Install FTP client
         run: sudo apt-get update && sudo apt-get install -y lftp
 
-      - name: Deploy over FTPS
+      - name: Deploy over FTP
         shell: bash
         env:
           CPANEL_FTP_SERVER: ${{ secrets.CPANEL_FTP_SERVER }}
@@ -87,11 +87,9 @@ jobs:
           fi
           lftp --env-password --user "$CPANEL_FTP_USERNAME" --port "$CPANEL_FTP_PORT" "ftp://$CPANEL_FTP_SERVER" <<LFTP
           set cmd:fail-exit yes
-          set ftp:ssl-force yes
-          set ftp:ssl-protect-data yes
-          set ftp:ssl-protect-list yes
+          set ftp:ssl-allow no
+          set ftp:ssl-force no
           set ftp:passive-mode yes
-          set ssl:verify-certificate yes
           set net:timeout 30
           set net:max-retries 2
           mirror --reverse --parallel=2 --no-perms --verbose dist/ "$CPANEL_FTP_DIRECTORY"

@@ -1,8 +1,10 @@
 # Deployment naar cPanel
 
 GitHub Actions bouwt de statische Astro-site met Node.js 22 en `npm ci`.
-Na een geslaagde build wordt alleen de inhoud van `dist/` via expliciete
-FTPS (FTP met TLS, standaard poort 21) naar cPanel geupload.
+Na een geslaagde build wordt alleen de inhoud van `dist/` via gewone
+FTP (zonder TLS, standaard poort 21) naar cPanel geupload.
+Let op: de gebruikersnaam, het wachtwoord en de bestanden worden onversleuteld
+verstuurd. Gebruik een apart FTP-account met toegang tot alleen deze site.
 De pipeline draait bij een push naar `main` en via **Run workflow** in GitHub.
 Ook bij een handmatige run wordt alleen vanaf `main` gedeployed.
 
@@ -17,7 +19,7 @@ Ook bij een handmatige run wordt alleen vanaf `main` gedeployed.
 
 | Secret | Waarde |
 | --- | --- |
-| `CPANEL_FTP_SERVER` | FTP-hostnaam van je provider, zonder `ftp://` of pad. Gebruik de hostnaam die bij het TLS-certificaat hoort. |
+| `CPANEL_FTP_SERVER` | FTP-hostnaam van je provider, zonder `ftp://` of pad. |
 | `CPANEL_FTP_USERNAME` | Volledige FTP-gebruikersnaam zoals getoond in cPanel. |
 | `CPANEL_FTP_PASSWORD` | Wachtwoord van het FTP-account. |
 
@@ -25,7 +27,7 @@ Ook bij een handmatige run wordt alleen vanaf `main` gedeployed.
 
 | Variable | Standaard | Betekenis |
 | --- | --- | --- |
-| `CPANEL_FTP_PORT` | `21` | Poort voor expliciete FTPS. |
+| `CPANEL_FTP_PORT` | `21` | Poort voor gewone FTP. |
 | `CPANEL_FTP_DIRECTORY` | `public_html/` | Doelmap gezien vanaf de FTP-login, niet vanaf de cPanel-bestandsmanager. |
 
 Als het FTP-account al rechtstreeks in `public_html` uitkomt, stel
@@ -40,10 +42,10 @@ Controleer de doelmap voordat je de eerste deployment start.
 
 ## Gedrag en veiligheid
 
-- TLS is verplicht voor de verbinding en bestandsoverdracht.
-  Certificaatcontrole staat aan; ongeldige certificaten blokkeren deployment.
+- TLS is uitgeschakeld voor de verbinding en bestandsoverdracht.
+  Er is geen certificaatcontrole of bescherming tegen meelezen onderweg.
 - Wachtwoorden staan uitsluitend in GitHub secrets en worden via een
-  omgevingsvariabele aan de FTPS-client doorgegeven.
+  omgevingsvariabele aan de FTP-client doorgegeven. Dit versleutelt de verbinding niet.
 - Uploads naar productie draaien niet tegelijkertijd. Een lopende upload
   wordt niet afgebroken door een volgende push.
 - Bestaande bestanden worden overschreven als de build dezelfde paden bevat.
@@ -51,16 +53,17 @@ Controleer de doelmap voordat je de eerste deployment start.
   `.htaccess`, mailmappen en eventuele andere applicaties.
 - Verwijderde pagina's blijven daardoor op de server staan. Verwijder ze bewust
   en stel waar nodig een 301-redirect in via cPanel of `.htaccess`.
-- FTPS-upload is niet atomair: tijdens de upload kunnen oude en nieuwe bestanden
+- FTP-upload is niet atomair: tijdens de upload kunnen oude en nieuwe bestanden
   kort naast elkaar bestaan. Maak voor de eerste deployment een hostingback-up.
 - Het build-artifact blijft zeven dagen beschikbaar in GitHub Actions.
   Een oude commit kan via een revert op `main` opnieuw worden gebouwd en uitgerold.
 
 ## Hostingvoorwaarden
 
-De provider moet expliciete FTPS, passieve FTP en verbindingen vanaf GitHub-hosted
+De provider moet gewone FTP zonder TLS, passieve FTP en verbindingen vanaf GitHub-hosted
 runners toestaan. Bij een IP-allowlist is mogelijk een self-hosted runner met
-een vast IP nodig. Deze pipeline ondersteunt geen onbeveiligde FTP of SFTP.
+een vast IP nodig. Deze pipeline gebruikt geen FTPS of SFTP; een server die TLS
+verplicht stelt zal de upload weigeren.
 
 De site blijft een statische Astro-site. cPanel hoeft geen Node.js te draaien.
 Een formulierbackend wordt niet door deze pipeline ingericht; controleer dat
