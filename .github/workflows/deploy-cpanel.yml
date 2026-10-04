@@ -1,0 +1,99 @@
+name: Build and deploy to cPanel
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cpanel-production
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static site
+        run: npm run build
+
+      - name: Check build output
+        run: test -s dist/index.html && test -s dist/404.html
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: website
+          path: dist/
+          if-no-files-found: error
+          retention-days: 7
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: website
+          path: dist/
+
+      - name: Install FTPS client
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
+      - name: Deploy over FTPS
+        shell: bash
+        env:
+          CPANEL_FTP_SERVER: ${{ secrets.CPANEL_FTP_SERVER }}
+          CPANEL_FTP_USERNAME: ${{ secrets.CPANEL_FTP_USERNAME }}
+          LFTP_PASSWORD: ${{ secrets.CPANEL_FTP_PASSWORD }}
+          CPANEL_FTP_PORT: ${{ vars.CPANEL_FTP_PORT || '21' }}
+          CPANEL_FTP_DIRECTORY: ${{ vars.CPANEL_FTP_DIRECTORY || 'public_html/' }}
+        run: |
+          set -euo pipefail
+          for variable in CPANEL_FTP_SERVER CPANEL_FTP_USERNAME LFTP_PASSWORD; do
+            if [[ -z "${!variable}" ]]; then
+              echo "::error::Missing required secret: ${variable/LFTP_PASSWORD/CPANEL_FTP_PASSWORD}"
+              exit 1
+            fi
+          done
+          if [[ ! "$CPANEL_FTP_SERVER" =~ ^[a-zA-Z0-9][a-zA-Z0-9.-]*$ ]]; then
+            echo '::error::CPANEL_FTP_SERVER must be a hostname without a protocol or path.'
+            exit 1
+          fi
+          if [[ ! "$CPANEL_FTP_PORT" =~ ^[0-9]{1,5}$ ]] || (( 10#$CPANEL_FTP_PORT < 1 || 10#$CPANEL_FTP_PORT > 65535 )); then
+            echo '::error::CPANEL_FTP_PORT must be between 1 and 65535.'
+            exit 1
+          fi
+          if [[ ! "$CPANEL_FTP_DIRECTORY" =~ ^[a-zA-Z0-9_/-][a-zA-Z0-9_./-]*$ ]] || [[ "/$CPANEL_FTP_DIRECTORY/" == *'/../'* ]]; then
+            echo '::error::CPANEL_FTP_DIRECTORY must be a webroot path without spaces or parent-directory traversal.'
+            exit 1
+          fi
+          lftp --env-password --user "$CPANEL_FTP_USERNAME" --port "$CPANEL_FTP_PORT" "ftp://$CPANEL_FTP_SERVER" <<LFTP
+          set cmd:fail-exit yes
+          set ftp:ssl-force yes
+          set ftp:ssl-protect-data yes
+          set ftp:ssl-protect-list yes
+          set ftp:passive-mode yes
+          set ssl:verify-certificate yes
+          set net:timeout 30
+          set net:max-retries 2
+          mirror --reverse --parallel=2 --no-perms --verbose dist/ "$CPANEL_FTP_DIRECTORY"
+          bye
+          LFTP
